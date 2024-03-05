@@ -18,7 +18,6 @@ import {
 } from '../../common/helpers';
 
 export default async function manifestEndpoint(req: NextApiRequest, res: NextApiResponse) {
-  console.log('This is called with the following headers:', req.headers);
   
   if (req.method !== 'GET') {
     res.statusCode = 405;
@@ -159,6 +158,9 @@ async function putUpdateInResponseAsync(
       expoClient: expoConfig,
     },
   };
+
+  console.log('This is called with the following headers:', JSON.stringify(manifest, null, 2));
+
 
   let signature = null;
   const expectSignatureHeader = req.headers['expo-expect-signature'];
